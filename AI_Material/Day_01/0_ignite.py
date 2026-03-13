@@ -1,3 +1,4 @@
+'''
 # ═══════════════════════════════════
 #  0_IGNITE — Day 01: The Spark
 # ═══════════════════════════════════
@@ -30,3 +31,4 @@ A perfect 4-5 hour session looks like this:
 This is not a race. It is about depth. About building an unshakeable foundation. The person who wants to build a skyscraper spends more time on the foundation than the person building a shed. You are here to build a skyscraper.
 
 Today is Day 1. The spark. Let's begin.
+'''
