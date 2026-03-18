@@ -83,10 +83,40 @@ print('hello:', 'is now', hello)
 
 print('==================================')
 
+a = 1
+b = 1.2
+c = 'oyee bhava'
+d = True
+
+print('a=', a)
+print('b=', b)
+print("c=", c)
+print('d=', d)
+
+# new learning huh i was not knowing this before
+print('xey =' + 'x*10^y')
+# also
+print('^=' + '**')
+
+# like 10 to the power of 100  which looks like  10^100 but to solve it in python we will write 10**100
+
+print('10^100 =', 10**100)
+
+# now
+a =10
+b = 20.20
+c = "hello"
+d = True
+
+print(type(a), type(b), type(c), type(d))
 
 
+a = 10
+b = 4/1
+c = 4/2
 
+print(a, b, c)
+print(type(a), type(b), type(c))
 
-
-
+# yup i got it correct 
 
