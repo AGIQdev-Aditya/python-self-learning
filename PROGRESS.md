@@ -1,4 +1,4 @@
-Last generated: Day 01
+Last generated: Day 02
 
 Topics covered so far:
 - `print()` function, including `sep` and `end` parameters
@@ -6,21 +6,26 @@ Topics covered so far:
 - Data Types: `int`, `float`, `str`, `bool`
 - `type()` function for checking data types
 - The memory model (names pointing to objects)
+- String Indexing (Forward and Negative)
+- String Slicing (`[start:stop:step]`)
+- The `len()` function
+- String methods (`.upper()`, `.lower()`, `.strip()`, `.replace()`, `.find()`, `.startswith()`, `.endswith()`, `.join()`)
+- The `in` operator for membership testing
+- String Immutability
 
 Key concepts carrying forward:
 - Everything is an object in Python.
 - Variables are just names/pointers to these objects.
-- `TypeError` is the result of mixing incompatible data types.
-- The `=` sign is for assignment, not mathematical equality.
+- Strings are immutable sequences.
+- Zero-based indexing is the standard.
+- Slicing creates a NEW object in memory.
 
-Next day: 02 — Strings: indexing, slicing, len(), methods
+Next day: 03 — input(), type casting: int(), float(), str()
 
-Position: Day 01 of 43
+Position: Day 02 of 43
 
 Notes:
-This is the foundational day. All future concepts will build upon the idea
-of variables holding different types of data and using functions like print()
-to see the results. A solid understanding of the memory model is crucial.
+Aditya is now comfortable with the idea of data as objects. The sequence protocol (indexing/slicing) introduced today is the foundation for Lists and Tuples later. Parsing logs and simple encryption in the Forge projects reinforce string methods.
 
 FULL CURRICULUM (43 Days):
 Day 01 — print(), variables, data types (int, float, str, bool), type()
