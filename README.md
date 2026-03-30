@@ -37,7 +37,7 @@ parallel to the course.
 ## Progress Tracker
 
 - [x] Day 01: `print()`, variables, data types (int, float, str, bool), `type()`
-- [ ] Day 02: Strings: indexing, slicing, `len()`, methods
+- [X] Day 02: Strings: indexing, slicing, `len()`, methods
 - [ ] Day 03: `input()`, type casting: `int()`, `float()`, `str()`
 - [ ] Day 04: f-strings, formatting, multi-line strings
 - [ ] Day 05: Numbers: arithmetic, modulo, floor division, math module

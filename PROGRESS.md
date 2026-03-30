@@ -1,4 +1,4 @@
-Last generated: Day 02
+Last generated: Day 03
 
 Topics covered so far:
 - `print()` function, including `sep` and `end` parameters
@@ -12,20 +12,28 @@ Topics covered so far:
 - String methods (`.upper()`, `.lower()`, `.strip()`, `.replace()`, `.find()`, `.startswith()`, `.endswith()`, `.join()`)
 - The `in` operator for membership testing
 - String Immutability
+- The `input()` function to get user data as a string
+- The `int()`, `float()`, and `str()` functions for type casting
+- `ValueError` for invalid casting, `TypeError` for invalid operations
 
 Key concepts carrying forward:
+- The INPUT-PROCESS-OUTPUT pattern is the fundamental structure of most programs.
+- `input()` always returns a string. You MUST cast it to `int` or `float` before doing math.
+- Operations can fail with a `ValueError` (bad data) or `TypeError` (wrong type).
+- Always `strip()` user input before casting to handle leading/trailing whitespace.
 - Everything is an object in Python.
 - Variables are just names/pointers to these objects.
 - Strings are immutable sequences.
 - Zero-based indexing is the standard.
-- Slicing creates a NEW object in memory.
 
-Next day: 03 — input(), type casting: int(), float(), str()
+Next day: 04 — f-strings, formatting, multi-line strings
 
-Position: Day 02 of 43
+Position: Day 03 of 43
 
 Notes:
-Aditya is now comfortable with the idea of data as objects. The sequence protocol (indexing/slicing) introduced today is the foundation for Lists and Tuples later. Parsing logs and simple encryption in the Forge projects reinforce string methods.
+- Aditya seems to have a slight misunderstanding of variable assignment mechanics, specifically how names point to objects. The incorrect variable swap logic in Day 01's work is evidence. Day 03's material included a "Pause and Think" section to directly address this.
+- While string methods are being used, the concept of method chaining (e.g., `data.strip().upper()`) might not be fully solidified. This was reinforced in the Day 03 warm-up problems.
+- The INPUT-PROCESS-OUTPUT pattern is now central. The core challenge will be remembering to cast `input()` strings to numbers (`int()`/`float()`) before doing math, and casting numbers back to `str()` for concatenation. This will be a major source of `TypeError` and `ValueError` going forward.
 
 FULL CURRICULUM (43 Days):
 Day 01 — print(), variables, data types (int, float, str, bool), type()
