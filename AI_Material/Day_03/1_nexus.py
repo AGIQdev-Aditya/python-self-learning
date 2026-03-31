@@ -88,6 +88,21 @@ print("Connects to sensor and reports if temp exceeds a threshold.")
 temp_threshold = input("Enter the maximum safe CPU temperature in C: ")
 print("Monitoring enabled. Alert will be triggered if temp exceeds", temp_threshold, "C.")
 
+# ═══════════════════════════════════════════════
+#  PAUSE AND THINK (LAYER 6)
+# ═══════════════════════════════════════════════
+# Predict the output of the following code if the user enters `10` for the
+# first prompt and `25` for the second.
+
+val_1 = input("Enter the first number: ")
+val_2 = input("Enter the second number: ")
+
+result = val_1 + val_2
+print("The result is:", result)
+
+# Does it print `35`? Or something else? Why?
+# This is a direct test of the most critical rule of `input()`.
+
 # LAYER 7 — EDGE CASES AND GOTCHAS
 
 # Gotcha 1: Empty input.
@@ -238,14 +253,15 @@ print("float(True) is:", float(True))   # -> 1.0
 print("float(False) is:", float(False)) # -> 0.0
 
 # Gotcha 2: User input with whitespace.
-# What if the user types `"  25  "` with spaces?
+# What if the user types `"  25  "` with spaces? Good news.
+# Python's `int()` and `float()` functions are smart enough to handle this.
 spaced_input = "  25  "
-# number = int(spaced_input) # This will cause a ValueError!
-
-# The `int()` and `float()` functions don't automatically strip whitespace.
-# You have to do it yourself first. This is a perfect place to chain methods!
-number = int(spaced_input.strip())
+number = int(spaced_input) # This works perfectly!
 print("Stripped and converted:", number)
+
+# The functions automatically ignore leading and trailing whitespace.
+# This is a convenience feature. Note that it only applies to space at the
+# beginning or end. `int("2 5")` would still be a ValueError.
 
 # Gotcha 3: Negative numbers
 # The conversion functions handle negative signs perfectly.

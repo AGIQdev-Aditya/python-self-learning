@@ -8,18 +8,18 @@
 # manipulation, and basic arithmetic.
 
 # ═══════════════════════════════════
-#  PROJECT 1: TERMINAL VELOCITY
+#  PROJECT 1: ROBO-ARM
 # ═══════════════════════════════════
 
 # COOL NAME
-# TERMINAL VELOCITY: A Kinematics Command-Line Calculator
+# ROBO-ARM: A Motion Calculator
 
 # DESCRIPTION
-# A Python script that runs in your terminal and helps you solve for one of the
-# key variables in the first equation of motion: `v = u + at`.
-# It's a real tool you could have used to check your homework for your HSC Physics exams.
-# It proves that with just a few lines of code, you can build tools that are
-# genuinely useful and save you time.
+# A Python script that runs on your Raspberry Pi to help you calculate the
+# movement of a robotic arm. It solves for one of the key variables in the
+# first equation of motion: `v = u + at`. This is a real tool you could use
+# to prototype a robotics project, proving that with just a few lines of code,
+# you can build tools that have a real-world physical application.
 
 # FEATURES
 # - Asks the user which variable they want to solve for: final velocity (v),
@@ -31,18 +31,18 @@
 # SAMPLE INTERACTION
 # This is what it should look like when the user wants to solve for 'a' (acceleration).
 #
-# --- TERMINAL VELOCITY: Kinematics CLI ---
+# --- ROBO-ARM: A Motion Calculator ---
 # Which variable do you want to solve for? (v, u, a, t): a
 #
 # --- Solving for Acceleration (a) ---
 # The formula is: a = (v - u) / t
 #
-# Enter final velocity (v) in m/s: 100
-# Enter initial velocity (u) in m/s: 20
-# Enter time (t) in seconds: 10
+# Enter final velocity (v) in m/s: 0.5
+# Enter initial velocity (u) in m/s: 0.1
+# Enter time (t) in seconds: 2
 #
 # Calculation complete.
-# The acceleration (a) is: 8.0 m/s^2
+# The acceleration (a) is: 0.2 m/s^2
 
 # HINT SYSTEM
 

@@ -68,23 +68,25 @@ data_packet_2 = "user_id=5678;session_id=zyxw;payload='world'"
 # Packet 2 search result: 13
 
 
-# Problem 4: Slicing with Steps
-# Extract the vital signs from a packed data string. The format is
-# "TYPE,VALUE,TYPE,VALUE,...". We only want the values.
-vitals_string = "HR,80,BP,120,TEMP,37.0,SPO2,98"
-# HINT: If you start at the right index and take the right size step...
+# Problem 4: Structured Log Parsing
+# A server log entry is formatted with fixed-width fields. Extract the
+# CPU, Memory, and Disk usage percentages.
+log_entry = "INFO:2023-08-21|CPU:075%|MEM:045%|DISK:088%"
+# HINT: Each data block like `|CPU:075%` is 9 characters long.
+# You can find the start of one section and slice out the percentage.
+# For example, 'CPU:' starts at index 17. The number starts 4 chars after that.
 # Your code here
-# heart_rate = ?
-# blood_pressure = ?
-# temperature = ?
-# print("HR:", heart_rate)
-# print("BP:", blood_pressure)
-# print("SPO2:", vitals_string[31:]) # A little freebie for the last one
+# cpu_usage = ?
+# mem_usage = ?
+# disk_usage = ?
+# print("CPU Usage:", cpu_usage)
+# print("Memory Usage:", mem_usage)
+# print("Disk Usage:", disk_usage)
 #
 # EXPECTED OUTPUT:
-# HR: 80
-# BP: 120
-# SPO2: 98
+# CPU Usage: 075
+# Memory Usage: 045
+# Disk Usage: 088
 
 
 # ═══════════════════════════════════
