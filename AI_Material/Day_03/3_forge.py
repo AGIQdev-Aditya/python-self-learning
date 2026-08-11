@@ -1,120 +1,371 @@
-# ═══════════════════════════════════
-#  3_FORGE — Day 03
-# ═══════════════════════════════════
-
-# Today's session is about building something real with the INPUT-PROCESS-OUTPUT
-# pattern. This project will test everything you've learned so far:
-# `print()`, variables, `int()`, `float()`, `str()`, `input()`, string
-# manipulation, and basic arithmetic.
-
-# ═══════════════════════════════════
-#  PROJECT 1: ROBO-ARM
-# ═══════════════════════════════════
-
-# COOL NAME
-# ROBO-ARM: A Motion Calculator
-
-# DESCRIPTION
-# A Python script that runs on your Raspberry Pi to help you calculate the
-# movement of a robotic arm. It solves for one of the key variables in the
-# first equation of motion: `v = u + at`. This is a real tool you could use
-# to prototype a robotics project, proving that with just a few lines of code,
-# you can build tools that have a real-world physical application.
-
-# FEATURES
-# - Asks the user which variable they want to solve for: final velocity (v),
-#   initial velocity (u), acceleration (a), or time (t).
-# - Based on their choice, it asks for the values of the other three variables.
-# - It correctly calculates and prints the result with its proper units.
-# - It handles floating-point numbers for all inputs.
-
-# SAMPLE INTERACTION
-# This is what it should look like when the user wants to solve for 'a' (acceleration).
+# AI_Material/Day_03/3_forge.py
+# DAY 03 FORGE — INPUT / CLEAN / CAST / REPORT
+# Boundary: Day 01, Day 02, Day 03 only.
+# No solutions. Build your answers in My_Work/Day_03/.
 #
-# --- ROBO-ARM: A Motion Calculator ---
-# Which variable do you want to solve for? (v, u, a, t): a
+# TODAY: Day 03
+# CORE SKILLS:
+# - input()
+# - string cleaning with .strip()
+# - string transformation with .upper()
+# - casting with int(), float(), str()
+# - type() awareness
+# - len(), indexing, slicing
+# - string methods: .find(), .startswith(), .replace()
+# - print() with concatenation or sep
 #
-# --- Solving for Acceleration (a) ---
-# The formula is: a = (v - u) / t
-#
-# Enter final velocity (v) in m/s: 0.5
-# Enter initial velocity (u) in m/s: 0.1
-# Enter time (t) in seconds: 2
-#
-# Calculation complete.
-# The acceleration (a) is: 0.2 m/s^2
+# NON-NEGOTIABLE QUALITY BAR:
+# 1. Every input starts as a string.
+# 2. Every text input must be cleaned before use.
+# 3. Every numeric input must be cast after cleaning.
+# 4. Every report line must match the expected output exactly.
+# 5. Variables must show their stage:
+#    raw input -> cleaned value -> converted value.
+# 6. No future concepts are allowed.
 
-# HINT SYSTEM
 
-# Hint 1: Thinking Direction
-# The program has to have different "paths." How can you ask the user which path
-# to take at the start? You can't use `if/elif/else` yet. So... maybe you just
-# make four separate mini-programs and tell the user which one to comment/uncomment?
-# No, that's messy.
-#
-# Think about the structure. You can have one block of code for solving for 'v',
-# one for 'u', and so on. But how do you run only one of them? The simplest way
-# without conditions is to just code one path. For this project, just implement
-# the path for solving for 'a' (acceleration) as shown in the sample. In a few
-# days, we'll learn how to make the program choose the path itself.
+# ============================================================
+# PROJECT 1 — MISSION INTAKE CONSOLE
+# ============================================================
 
-# Hint 2: Concept and Approach
-# 1. Print the welcome message and ask the user which variable to solve for.
-# 2. For now, assume they type 'a' and proceed.
-# 3. Print the header for the "Solving for Acceleration" section.
-# 4. Use `input()` to get the string values for `v`, `u`, and `t`.
-# 5. Use `float()` to convert each of these input strings into a number.
-# 6. Perform the calculation `a = (v - u) / t`.
-# 7. Use `print()` and `str()` to create the final, formatted output string.
-# The core pattern is `input()` -> `float()` -> calculate -> `print()`.
+# NAME:
+# Mission Intake Console
 
-# Hint 3: Structural Skeleton
-# (This is not runnable code, just a blueprint for your `3_my_forge.py`)
-#
-# # Print a welcome message for the main tool
-#
-# # Ask the user which variable they want to solve for.
-# # For now, we will just assume they choose 'a'.
-#
-# # --- Solving for 'a' ---
-# # Print the header for the acceleration section
-# # Print the formula that will be used
-#
-# # Get `v` from the user (input) and store it in a variable
-# # Get `u` from the user (input) and store it in a variable
-# # Get `t` from the user (input) and store it in a variable
-#
-# # Convert the string version of v to a float
-# # Convert the string version of u to a float
-# # Convert the string version of t to a float
-#
-# # Calculate 'a' using the formula and the float variables
-#
-# # Print the final result, nicely formatted with units.
-# # Remember to cast your calculated 'a' back to a string for concatenation!
+# FEATURES:
+# - Ask for a station name.
+# - Ask for a fuel amount.
+# - Ask for a crew count.
+# - Ask for a cargo weight.
+# - Store each raw answer in its own variable.
+# - Remove side spaces from every input.
+# - Convert the station name to uppercase.
+# - Convert the fuel amount to float.
+# - Convert the crew count to int.
+# - Convert the cargo weight to float.
+# - Compute RESERVE as fuel amount plus 1.0.
+# - Compute TOTAL as fuel amount plus cargo weight.
+# - Print a seven-line mission report.
 
-# ASSERT TESTS
-# This project doesn't use functions yet, so we can't use `assert` tests in the
-# same way. The "test" is running your program and checking if your output
-# exactly matches the sample interaction for the same inputs.
+# INTERACTION MODEL:
+# The user runs the program.
+# The program asks four questions in this exact order:
+#
+# 1. Station name
+# 2. Fuel amount
+# 3. Crew count
+# 4. Cargo weight
+#
+# The program then prints exactly:
+# STATION: cleaned station name in uppercase
+# FUEL: fuel amount as float
+# CREW: crew count as int
+# CARGO: cargo weight as float
+# RESERVE: fuel amount plus 1.0
+# TOTAL: fuel amount plus cargo weight
+# STATUS: READY
 
-# EXTENSIONS
-# 1. Implement the other three paths: solving for `v`, `u`, and `t`. You can
-#    just write them one after the other in the same file.
-# 2. Add another calculator for a different equation of motion, like
-#    `s = ut + 0.5 * a * t^2`.
-# 3. Add a "unit converter" at the start of your program. Ask the user if their
-#    velocity is in km/h or m/s. If it's km/h, do the math to convert it to m/s
-#    before using it in the physics formula. (1 km/h = 5/18 m/s).
+# SAMPLE SESSION VALUES:
+# Station input: "  moon  "
+# Fuel input: "2.5"
+# Crew input: " 4 "
+# Cargo input: " 1.25 "
 
-# PROFESSIONAL VIEW
-# At a production level, a tool like this wouldn't just be a single script.
-# It would be part of a larger library of physics calculations. Each formula
-# would be a separate, well-documented function. Instead of crashing on bad input
-# (like typing "hello" for velocity), it would use error handling (`try/except`
-# blocks) to catch the `ValueError` and give the user a friendly message. It
-# would also have a full suite of automated tests (`pytest`) to verify every
-# calculation is correct without needing a human to run it manually.
+# SAMPLE OUTPUT:
+# STATION: MOON
+# FUEL: 2.5
+# CREW: 4
+# CARGO: 1.25
+# RESERVE: 3.5
+# TOTAL: 3.75
+# STATUS: READY
 
-# EMPIRE CONNECTION
-# This simple calculator is the direct ancestor of the simulation software used to calculate rocket trajectories, model robotic arm movements, and predict the behavior of complex systems for your AGI to analyze.
+# VARIABLE MODEL TARGET:
+# You should be able to explain each variable:
+# - raw_station points to the exact string from input()
+# - station points to the cleaned and uppercased string
+# - fuel_amount points to a float object
+# - crew_count points to an int object
+#
+# Remember: variables are names pointing to objects.
+# Reassigning a variable makes the name point to a new object.
+
+# METHOD CHAINING TARGET:
+# You may clean and transform text in one expression,
+# but the result must be stored in a variable.
+# Example idea, not full solution:
+# cleaned and uppercased station text should be stored as station.
+
+# HINTS:
+# 1. Clean text before casting it.
+#    Side spaces should not survive into the final report.
+# 2. Use separate variables for raw input, cleaned input,
+#    and converted values.
+# 3. When combining text and numbers in output,
+#    convert numbers to text with str(), or use print() with sep.
+
+# TESTS:
+
+# Test 1 - Normal input
+# Input line 1: "  moon  "
+# Input line 2: "2.5"
+# Input line 3: " 4 "
+# Input line 4: " 1.25 "
+# Expected output:
+# STATION: MOON
+# FUEL: 2.5
+# CREW: 4
+# CARGO: 1.25
+# RESERVE: 3.5
+# TOTAL: 3.75
+# STATUS: READY
+
+# Test 2 - Whole-number fuel and zero cargo
+# Input line 1: "earth"
+# Input line 2: "3"
+# Input line 3: "0"
+# Input line 4: "0"
+# Expected output:
+# STATION: EARTH
+# FUEL: 3.0
+# CREW: 0
+# CARGO: 0.0
+# RESERVE: 4.0
+# TOTAL: 3.0
+# STATUS: READY
+
+# Test 3 - Leading zeros in crew count
+# Input line 1: "  pad03  "
+# Input line 2: "1.25"
+# Input line 3: "007"
+# Input line 4: "0.75"
+# Expected output:
+# STATION: PAD03
+# FUEL: 1.25
+# CREW: 7
+# CARGO: 0.75
+# RESERVE: 2.25
+# TOTAL: 2.0
+# STATUS: READY
+
+# Test 4 - Edge case: empty station name
+# Input line 1: "   "
+# Input line 2: "2.0"
+# Input line 3: "1"
+# Input line 4: "0.5"
+# Expected output:
+# STATION:
+# FUEL: 2.0
+# CREW: 1
+# CARGO: 0.5
+# RESERVE: 3.0
+# TOTAL: 2.5
+# STATUS: READY
+
+# Test 5 - Bad fuel input
+# Input line 1: "mars"
+# Input line 2: "abc"
+# Expected result:
+# ValueError occurs.
+# The program is allowed to stop here.
+# This is correct for Day 03 because bad data can fail casting.
+
+# Test 6 - Bad crew input
+# Input line 1: "mars"
+# Input line 2: "2.0"
+# Input line 3: "2.5"
+# Expected result:
+# ValueError occurs.
+# int() cannot convert "2.5" directly.
+
+# EXTENSIONS:
+# 1. Add an oxygen reading as a float and print oxygen plus 1.0.
+# 2. Print the type of fuel_amount and crew_count on separate lines.
+# 3. Print the whole report on one line using print() with sep.
+# 4. Replace spaces inside the station name with underscores.
+#    Example: "moon base" becomes "MOON_BASE".
+
+# PROFESSIONAL VIEW:
+# Real systems often receive numbers as text from forms, terminals,
+# sensors, APIs, or command-line tools. The program must clean that
+# text, cast it safely, then produce a clean report.
+# This exact pattern appears in data pipelines, dashboards, robotics
+# control panels, and mission monitoring tools.
+
+# EMPIRE CONNECTION:
+# This maps directly to Raspberry Pi sensor work.
+# A sensor may send fuel, temperature, battery, or cargo values as text.
+# Your Pi code must clean and cast those values before they can be used
+# in calculations or reports.
+
+
+# ============================================================
+# PROJECT 2 — ARCH/RPI SYSTEM IDENTITY CARD
+# ============================================================
+
+# NAME:
+# Arch/RPi System Identity Card
+
+# FEATURES:
+# - Ask for a hostname.
+# - Ask for a kernel release.
+# - Ask for a board model.
+# - Store each raw answer in its own variable.
+# - Remove side spaces from all inputs.
+# - Convert hostname, kernel release, and board model to uppercase.
+# - Print the length of hostname.
+# - Print the length of kernel release.
+# - Print the length of board model.
+# - Print the first three characters of kernel release.
+# - Print the last three characters of kernel release.
+# - Print the position of the first dot in kernel release.
+# - Print whether hostname starts with ARCH.
+# - Print a system tag in the form HOST/KERNEL/MODEL.
+
+# INTERACTION MODEL:
+# On your Arch Linux machine or Raspberry Pi, you can find real values with:
+#
+# hostname
+# uname -r
+#
+# Then run your Python program.
+# Enter the real hostname when asked.
+# Enter the real kernel release when asked.
+# Enter a board model, for example: RPi 5, Laptop, Desktop.
+#
+# If you are not on Arch/RPi, you may enter any values.
+
+# OUTPUT CONTRACT:
+# The program prints exactly:
+# HOST: cleaned hostname
+# KERNEL: cleaned kernel release
+# MODEL: cleaned board model
+# HOST_LENGTH: length of cleaned hostname
+# KERNEL_LENGTH: length of cleaned kernel release
+# MODEL_LENGTH: length of cleaned board model
+# KERNEL_PREFIX: first three characters of cleaned kernel release
+# KERNEL_SUFFIX: last three characters of cleaned kernel release
+# DOT_POSITION: position of first dot in cleaned kernel release, or -1
+# ARCH_STYLE: True if cleaned hostname starts with ARCH, otherwise False
+# SYSTEM_TAG: HOST/KERNEL/MODEL
+
+# SAMPLE SESSION VALUES:
+# Hostname input: "  archpi  "
+# Kernel input: "  6.6.2-v8  "
+# Model input: "  rpi 5  "
+
+# SAMPLE OUTPUT:
+# HOST: ARCHPI
+# KERNEL: 6.6.2-V8
+# MODEL: RPI 5
+# HOST_LENGTH: 6
+# KERNEL_LENGTH: 8
+# MODEL_LENGTH: 5
+# KERNEL_PREFIX: 6.6
+# KERNEL_SUFFIX: -V8
+# DOT_POSITION: 1
+# ARCH_STYLE: True
+# SYSTEM_TAG: ARCHPI/6.6.2-V8/RPI 5
+
+# EDGE CASES TO RESPECT:
+# - Empty strings are allowed.
+# - Strings shorter than three characters are allowed.
+# - Slicing must not crash on short strings.
+# - If there is no dot, .find() should produce -1.
+# - Length must be measured after stripping side spaces.
+
+# HINTS:
+# 1. Use strip before len so side spaces do not inflate the length.
+# 2. A slice can extract the first three and last three characters.
+# 3. .find() returns -1 when the character is not found.
+# 4. When concatenating text with a length or boolean-related value,
+#    convert non-string values to string first, or use print() with sep.
+
+# TESTS:
+
+# Test 1 - Normal Arch/RPi-style input
+# Input line 1: "  archpi  "
+# Input line 2: "  6.6.2-v8  "
+# Input line 3: "  rpi 5  "
+# Expected output:
+# HOST: ARCHPI
+# KERNEL: 6.6.2-V8
+# MODEL: RPI 5
+# HOST_LENGTH: 6
+# KERNEL_LENGTH: 8
+# MODEL_LENGTH: 5
+# KERNEL_PREFIX: 6.6
+# KERNEL_SUFFIX: -V8
+# DOT_POSITION: 1
+# ARCH_STYLE: True
+# SYSTEM_TAG: ARCHPI/6.6.2-V8/RPI 5
+
+# Test 2 - Edge case: empty kernel and model
+# Input line 1: "pi"
+# Input line 2: "   "
+# Input line 3: "   "
+# Expected output:
+# HOST: PI
+# KERNEL:
+# MODEL:
+# HOST_LENGTH: 2
+# KERNEL_LENGTH: 0
+# MODEL_LENGTH: 0
+# KERNEL_PREFIX:
+# KERNEL_SUFFIX:
+# DOT_POSITION: -1
+# ARCH_STYLE: False
+# SYSTEM_TAG: PI//
+
+# Test 3 - Mixed case, digits, and no dot
+# Input line 1: "Alpha01"
+# Input line 2: "5100"
+# Input line 3: "  Raspberry Pi  "
+# Expected output:
+# HOST: ALPHA01
+# KERNEL: 5100
+# MODEL: RASPBERRY PI
+# HOST_LENGTH: 7
+# KERNEL_LENGTH: 4
+# MODEL_LENGTH: 12
+# KERNEL_PREFIX: 510
+# KERNEL_SUFFIX: 100
+# DOT_POSITION: -1
+# ARCH_STYLE: False
+# SYSTEM_TAG: ALPHA01/5100/RASPBERRY PI
+
+# EXTENSIONS:
+# 1. Print MODEL_CODE by replacing spaces in the cleaned model with hyphens.
+#    Example: "RASPBERRY PI" becomes "RASPBERRY-PI".
+# 2. Print whether KERNEL contains a dot using the in operator.
+# 3. Print the first and last character of the cleaned hostname.
+# 4. Print the whole system card on one line using print() with sep.
+
+# PROFESSIONAL VIEW:
+# System tools often collect machine identity data: hostname, kernel version,
+# architecture, and device model. This data is usually text first, then cleaned,
+# transformed, measured, and displayed or logged.
+# This is common in CLI utilities, inventory tools, device dashboards,
+# and remote fleet monitoring.
+
+# EMPIRE CONNECTION:
+# This project is directly usable on your Arch Linux setup or Raspberry Pi.
+# You are taking real shell outputs and turning them into a cleaned Python
+# system report. This is the beginning of real systems engineering:
+# observe the machine, clean the data, and make the state visible.
+
+
+# ============================================================
+# FINAL FORGE CHECK
+# ============================================================
+# - No future concepts are required.
+# - No if statements are required.
+# - No loops are required.
+# - No advanced formatting is required.
+# - Only Day 01 to Day 03 concepts are used.
+# - Weak areas targeted:
+#   1. input() always returns a string.
+#   2. Clean before casting.
+#   3. Cast before doing math.
+#   4. Use str() when combining numbers with text.
+#   5. Variables are names pointing to objects.
+#   6. Method chaining must still produce stored variables.
