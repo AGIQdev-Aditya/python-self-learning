@@ -31,9 +31,20 @@ print(input("What is your name?"))
 #   i guess because teh txt score is a string and we cant  liek add a sting and a integer
 
 
-negative_text = "-3"
-negative_number = int(negative_text)
-print("negative_text:", negative_text)
-print("negative_number:", negative_number)
-print("type(negative_number):", type(negative_number))
-print()
+# 6
+
+# 1  i guess t not make teh python work more  i guess   or i guess not to get erros wehile counting  or validating up stufff  as the user can type   spaces or thing at first or end where we were  not  assuming thm to even exist there
+
+# 2   dont wactually know  will see    it just cleens any breakig points in teh lin and   whitespaces so tah we cdont any type or erros or wronmg  outputs
+
+# 3   it just gonna  give error
+
+# 4  error
+
+# 5   when we need to provide  an out put   we need to use teh string converter   rto be able to join stings
+
+
+#    okay  so this is donw iwll see teh next ones later bnow okay for bnow and bye  and also my typing speed mght be raised but it wont be abel to  i9ncrease drastically as am using the wrong method  but will try to  improve and learn the better way
+
+
+# so checking if it really pushing or not
